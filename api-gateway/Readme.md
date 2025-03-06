@@ -8,8 +8,8 @@ This API Gateway acts as a smart reverse proxy, routing client requests to vario
 
 ## 🛠️ Tech Stack
 
-- **🟢 Node.js** (v18)
-- **⚡ Express.js** (v4.21.2)
+- **🟢 Node.js**
+- **⚡ Express.js** 
 - **🐳 Docker**
 - **📦 Redis** (Rate Limiting)
 - **📝 Winston** (Logging)
