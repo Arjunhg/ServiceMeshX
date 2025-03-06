@@ -71,12 +71,13 @@ cp .env.example .env
 
 2. **Configure Environment Variables**
 ```env
-PORT=4003
-MONGODB_URI=mongodb://localhost:27017/media-service
-REDIS_URL=redis://localhost:6379
-CLOUDINARY_CLOUD_NAME=your-cloud-name
-CLOUDINARY_API_KEY=your-api-key
-CLOUDINARY_API_SECRET=your-api-secret
+PORT = 3003
+cloud_name = "your-cloud-name"
+apiKey = "your-api-key"
+api_secret = "your-api-secret" 
+MONGODB_URI = "your-mongodb-uri"
+NODE_ENV = development
+REDIS_URL = redis://localhost:6379
 RABBITMQ_URL=amqp://localhost:5672
 ```
 
