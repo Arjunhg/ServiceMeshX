@@ -1,12 +1,8 @@
-# For running all service at once
-
-version: '3.8'
-
 services:
   api-gateway:
-    build: ./api-gateway #build the image from the Dockerfile in the api-gateway directory
+    build: ./api-gateway
     ports:
-      - "3000:3000" # export port 3000 on host and map it to port 3000 on the container
+      - "3000:3000"
     env_file:
       - ./api-gateway/.env
     depends_on:
@@ -16,7 +12,7 @@ services:
       - REDIS_URL=redis://redis:6379
       - RABBITMQ_URL=amqp://rabbitmq:5672
 
-identity-service:
+  identity-service:
     build: ./identity-service
     env_file:
       - ./identity-service/.env
@@ -27,7 +23,7 @@ identity-service:
       - REDIS_URL=redis://redis:6379
       - RABBITMQ_URL=amqp://rabbitmq:5672
 
-post-service:
+  post-service:
     build: ./post-service
     env_file:
       - ./post-service/.env
@@ -38,7 +34,7 @@ post-service:
       - REDIS_URL=redis://redis:6379
       - RABBITMQ_URL=amqp://rabbitmq:5672
 
-media-service:
+  media-service:
     build: ./media-service
     env_file:
       - ./media-service/.env
@@ -49,7 +45,7 @@ media-service:
       - REDIS_URL=redis://redis:6379
       - RABBITMQ_URL=amqp://rabbitmq:5672
 
-search-service:
+  search-service:
     build: ./search-service
     env_file:
       - ./search-service/.env
@@ -60,12 +56,12 @@ search-service:
       - REDIS_URL=redis://redis:6379
       - RABBITMQ_URL=amqp://rabbitmq:5672
 
-redis:
+  redis:
     image: redis:alpine
     ports:
       - "6379:6379"
 
-rabbitmq:
+  rabbitmq:
     image: rabbitmq:3-management
     ports:
       - "5672:5672"
