@@ -10,10 +10,7 @@ services:
           name: redis
           property: connectionString
       - key: RABBITMQ_URL
-        fromService:
-          type: rabbitmq
-          name: rabbitmq
-          property: connectionString
+        value: amqp://rabbitmq:5672
 
   - type: web
     name: identity-service
@@ -26,10 +23,7 @@ services:
           name: redis
           property: connectionString
       - key: RABBITMQ_URL
-        fromService:
-          type: rabbitmq
-          name: rabbitmq
-          property: connectionString
+        value: amqp://rabbitmq:5672
 
   - type: web
     name: post-service
@@ -42,10 +36,7 @@ services:
           name: redis
           property: connectionString
       - key: RABBITMQ_URL
-        fromService:
-          type: rabbitmq
-          name: rabbitmq
-          property: connectionString
+        value: amqp://rabbitmq:5672
 
   - type: web
     name: media-service
@@ -58,10 +49,7 @@ services:
           name: redis
           property: connectionString
       - key: RABBITMQ_URL
-        fromService:
-          type: rabbitmq
-          name: rabbitmq
-          property: connectionString
+        value: amqp://rabbitmq:5672
 
   - type: web
     name: search-service
@@ -74,15 +62,14 @@ services:
           name: redis
           property: connectionString
       - key: RABBITMQ_URL
-        fromService:
-          type: rabbitmq
-          name: rabbitmq
-          property: connectionString
+        value: amqp://rabbitmq:5672
 
   - type: redis
     name: redis
     plan: free
 
-  - type: rabbitmq
+  - type: web
     name: rabbitmq
+    env: docker
+    dockerfilePath: rabbitmq/Dockerfile
     plan: free 
