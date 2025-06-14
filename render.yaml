@@ -11,7 +11,6 @@ services:
           property: connectionString
       - key: RABBITMQ_URL
         value: amqp://rabbitmq:5672
-
   - type: web
     name: identity-service
     env: docker
@@ -24,7 +23,6 @@ services:
           property: connectionString
       - key: RABBITMQ_URL
         value: amqp://rabbitmq:5672
-
   - type: web
     name: post-service
     env: docker
@@ -37,7 +35,6 @@ services:
           property: connectionString
       - key: RABBITMQ_URL
         value: amqp://rabbitmq:5672
-
   - type: web
     name: media-service
     env: docker
@@ -50,7 +47,6 @@ services:
           property: connectionString
       - key: RABBITMQ_URL
         value: amqp://rabbitmq:5672
-
   - type: web
     name: search-service
     env: docker
@@ -63,15 +59,11 @@ services:
           property: connectionString
       - key: RABBITMQ_URL
         value: amqp://rabbitmq:5672
-
   - type: redis
     name: redis
     plan: free
-
   - type: web
     name: rabbitmq
     env: docker
     dockerfilePath: rabbitmq/Dockerfile
     plan: free
-    ipAllowList:
-      - 0.0.0.0/0  # Allow all IPs for internal service communication 
