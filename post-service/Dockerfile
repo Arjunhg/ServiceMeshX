@@ -3,7 +3,7 @@
 FROM node:18-alpine
 
 # working directory inside container
-WORKDIR /use/src/app
+WORKDIR /usr/src/app
 
 COPY package*.json ./
 
