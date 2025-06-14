@@ -1,4 +1,9 @@
 services:
+  - type: keyvalue
+    name: redis
+    plan: free
+    ipAllowList: [] # Allows only internal Render services to access this Redis instance
+
   - type: web
     name: api-gateway
     env: docker
@@ -6,7 +11,7 @@ services:
     envVars:
       - key: REDIS_URL
         fromService:
-          type: redis
+          type: keyvalue
           name: redis
           property: connectionString
       - key: RABBITMQ_URL
@@ -19,7 +24,7 @@ services:
     envVars:
       - key: REDIS_URL
         fromService:
-          type: redis
+          type: keyvalue
           name: redis
           property: connectionString
       - key: RABBITMQ_URL
@@ -32,7 +37,7 @@ services:
     envVars:
       - key: REDIS_URL
         fromService:
-          type: redis
+          type: keyvalue
           name: redis
           property: connectionString
       - key: RABBITMQ_URL
@@ -45,7 +50,7 @@ services:
     envVars:
       - key: REDIS_URL
         fromService:
-          type: redis
+          type: keyvalue
           name: redis
           property: connectionString
       - key: RABBITMQ_URL
@@ -58,21 +63,11 @@ services:
     envVars:
       - key: REDIS_URL
         fromService:
-          type: redis
+          type: keyvalue
           name: redis
           property: connectionString
       - key: RABBITMQ_URL
         value: amqp://rabbitmq:5672
-
-  - type: redis
-    name: redis
-    plan: free
-    internalConnections:
-      - api-gateway
-      - identity-service
-      - post-service
-      - media-service
-      - search-service
 
   - type: worker
     name: rabbitmq
