@@ -62,8 +62,10 @@ services:
   - type: redis
     name: redis
     plan: free
-  - type: web
+  - type: pserv
     name: rabbitmq
     env: docker
     dockerfilePath: rabbitmq/Dockerfile
     plan: free
+    ipAllowList:
+      - 10.0.0.0/8
