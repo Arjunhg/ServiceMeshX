@@ -11,6 +11,7 @@ services:
           property: connectionString
       - key: RABBITMQ_URL
         value: amqp://rabbitmq:5672
+
   - type: web
     name: identity-service
     env: docker
@@ -23,6 +24,7 @@ services:
           property: connectionString
       - key: RABBITMQ_URL
         value: amqp://rabbitmq:5672
+
   - type: web
     name: post-service
     env: docker
@@ -35,6 +37,7 @@ services:
           property: connectionString
       - key: RABBITMQ_URL
         value: amqp://rabbitmq:5672
+
   - type: web
     name: media-service
     env: docker
@@ -47,6 +50,7 @@ services:
           property: connectionString
       - key: RABBITMQ_URL
         value: amqp://rabbitmq:5672
+
   - type: web
     name: search-service
     env: docker
@@ -59,9 +63,17 @@ services:
           property: connectionString
       - key: RABBITMQ_URL
         value: amqp://rabbitmq:5672
+
   - type: redis
     name: redis
     plan: free
+    internalConnections:
+      - api-gateway
+      - identity-service
+      - post-service
+      - media-service
+      - search-service
+
   - type: worker
     name: rabbitmq
     env: docker
