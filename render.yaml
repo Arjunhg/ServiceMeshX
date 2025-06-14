@@ -1,0 +1,88 @@
+services:
+  - type: web
+    name: api-gateway
+    env: docker
+    dockerfilePath: ./api-gateway/Dockerfile
+    envVars:
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: redis
+          property: connectionString
+      - key: RABBITMQ_URL
+        fromService:
+          type: rabbitmq
+          name: rabbitmq
+          property: connectionString
+
+  - type: web
+    name: identity-service
+    env: docker
+    dockerfilePath: ./identity-service/Dockerfile
+    envVars:
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: redis
+          property: connectionString
+      - key: RABBITMQ_URL
+        fromService:
+          type: rabbitmq
+          name: rabbitmq
+          property: connectionString
+
+  - type: web
+    name: post-service
+    env: docker
+    dockerfilePath: ./post-service/Dockerfile
+    envVars:
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: redis
+          property: connectionString
+      - key: RABBITMQ_URL
+        fromService:
+          type: rabbitmq
+          name: rabbitmq
+          property: connectionString
+
+  - type: web
+    name: media-service
+    env: docker
+    dockerfilePath: ./media-service/Dockerfile
+    envVars:
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: redis
+          property: connectionString
+      - key: RABBITMQ_URL
+        fromService:
+          type: rabbitmq
+          name: rabbitmq
+          property: connectionString
+
+  - type: web
+    name: search-service
+    env: docker
+    dockerfilePath: ./search-service/Dockerfile
+    envVars:
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: redis
+          property: connectionString
+      - key: RABBITMQ_URL
+        fromService:
+          type: rabbitmq
+          name: rabbitmq
+          property: connectionString
+
+  - type: redis
+    name: redis
+    plan: free
+
+  - type: rabbitmq
+    name: rabbitmq
+    plan: free 
